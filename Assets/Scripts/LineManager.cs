@@ -7,6 +7,8 @@ public class LineManager : MonoBehaviour {
 	public GameObject linePrefab;
 	public LineBehaviour activeLine;
 
+	public Rigidbody2D shipRb;
+
 	void Update () {
 		if (Input.GetMouseButtonDown (0)) {
 			GameObject line = Instantiate (linePrefab);
@@ -18,7 +20,10 @@ public class LineManager : MonoBehaviour {
 			activeLine.updateLine (mousePosition);
 		}
 
-		if (Input.GetMouseButtonUp (0)) activeLine = null;
+		if (Input.GetMouseButtonUp (0)){ 
+			activeLine = null;
+			if(shipRb.isKinematic) shipRb.bodyType = RigidbodyType2D.Dynamic;
+		}
 	}
 
 }

@@ -142,6 +142,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linePrefab: {fileID: 1464684466644556, guid: d0b5b8e955f349c4291f89de603b2aa6, type: 2}
   activeLine: {fileID: 0}
+  shipRb: {fileID: 1620348218}
 --- !u!4 &382057292
 Transform:
   m_ObjectHideFlags: 0
@@ -317,12 +318,12 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 1620348214}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1719a40ca2aa061438a20b1b15b4d2e0, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0016293557, y: -0.024448754}
-  m_Size: {x: 0.79659426, y: 0.3331643}
+  m_Offset: {x: -0.030967774, y: 0.017928129}
+  m_Size: {x: 0.8878726, y: 0.3918447}
   m_Direction: 1
 --- !u!50 &1620348218
 Rigidbody2D:
