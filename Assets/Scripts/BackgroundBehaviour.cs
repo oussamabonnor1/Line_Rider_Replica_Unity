@@ -9,7 +9,7 @@ public class BackgroundBehaviour : MonoBehaviour {
 	Material backgroundMat;
 
 	public float speed;
-
+ 
 	// Use this for initialization
 	void Start () {
 		backgroundMat = GetComponent<Renderer>().material;
