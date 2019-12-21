@@ -6,7 +6,7 @@
 A "Line Rider" game replica, 2D fun mobile game about just..being creative with lines 🗠.
 
 ## Screenshot:
-<img src="ScreenShots/lineGif.gif" width ="350"/>
+<img src="ScreenShots/lineGif.gif" width ="450"/>
 
 ## Game logic:
 For now, it's basically to have fun guiding the character on a crazy journey, the crazier the better!
