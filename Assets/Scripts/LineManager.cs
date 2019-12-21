@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LineManager : MonoBehaviour {
 
@@ -22,8 +23,13 @@ public class LineManager : MonoBehaviour {
 
 		if (Input.GetMouseButtonUp (0)){ 
 			activeLine = null;
+			Camera.main.GetComponent<CameraBehaviour>().cameraFollow();
 			if(shipRb.isKinematic) shipRb.bodyType = RigidbodyType2D.Dynamic;
 		}
 	}
 
+
+	public void restartScene(){
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	}
 }
