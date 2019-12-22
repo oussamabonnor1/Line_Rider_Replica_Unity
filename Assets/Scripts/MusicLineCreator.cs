@@ -5,30 +5,33 @@ using UnityEngine.SceneManagement;
 
 public class MusicLineCreator : MonoBehaviour {
 
-	public GameObject linePrefab;
+	public AudioSource audioSource;
 	public LineBehaviour activeLine;
 	public Rigidbody2D shipRb;
 
+	public float graphMagnitude;
+	public float graphPointX, graphPointY;
+	Vector2 graphPosition;
+
+	public float[] samples = new float[512];
+
+	void Start () {
+		if (shipRb.isKinematic) shipRb.bodyType = RigidbodyType2D.Dynamic;
+			Camera.main.GetComponent<CameraBehaviour> ().cameraFollow ();
+	}
+
 	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
-			GameObject line = Instantiate (linePrefab);
-			activeLine = line.GetComponent<LineBehaviour> ();
-		}
+		audioSource.GetSpectrumData(samples,0,FFTWindow.Blackman);
 
 		if (activeLine != null) {
-			Vector2 mousePosition = Camera.main.ScreenToWorldPoint (Input.mousePosition);
-			activeLine.updateLine (mousePosition);
-		}
-
-		if (Input.GetMouseButtonUp (0)){ 
-			activeLine = null;
-			Camera.main.GetComponent<CameraBehaviour>().cameraFollow();
-			if(shipRb.isKinematic) shipRb.bodyType = RigidbodyType2D.Dynamic;
+			graphPointY= (samples[0] + samples[1] + samples[2]) * graphMagnitude;
+			graphPointX = Mathf.Max(shipRb.velocity.x, graphPointY);
+			graphPosition = new Vector2 (graphPosition.x + (graphPointX * Time.deltaTime), graphPointY);
+			activeLine.updateLine (graphPosition);
 		}
 	}
 
-
-	public void restartScene(){
-		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+	public void restartScene () {
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
 	}
 }

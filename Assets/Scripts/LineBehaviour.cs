@@ -7,7 +7,7 @@ public class LineBehaviour : MonoBehaviour {
 
 	public LineRenderer line;
 	public EdgeCollider2D lineCollider;
-	List<Vector2> points;
+	public List<Vector2> points;
 
 	public void updateLine (Vector2 mousePosition) {
 

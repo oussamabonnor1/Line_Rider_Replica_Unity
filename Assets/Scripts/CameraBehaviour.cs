@@ -11,7 +11,6 @@ public class CameraBehaviour : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		follow = false;
 	}
 
 	public void cameraFollow () {
